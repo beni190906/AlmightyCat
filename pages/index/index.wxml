@@ -1,13 +1,47 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+
+<!--轮播图-->
+<view class="app">
+  <view class="header">
+    <swiper 
+      class="banner"
+      indicator-dots="{{indicatorDots}}"
+      autoplay="false" 
+      interval="{{interval}}" 
+      duration="{{duration}}" 
+      circular="true">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="355" height="150"/>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+
+  <view class="content">
+    <view class="post-need normal-shadow">
+      <button class="post-need__btn">点我发布</button>
+    </view>
+
+    <view class="service-list normal-shadow">
+    <ul>
+      <block wx:for="{{serviceList}}" wx:key="{{index}}">
+        <li class="service-list__item">
+          <p>
+            {{item.title}}
+          </p> 
+          <image src="{{item.icon}}">
+
+          </image>
+        </li>
+      </block>
+    </ul>
+
+    </view>
   </view>
+
 </view>
+<image class="bg-test" src="./images/background.jpg">
+
+</image>
