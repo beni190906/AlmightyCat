@@ -4,6 +4,6 @@
 
 # Contributor
 
-- [https://github.com/yushen7](yushen7)
-- [https://github.com/kuoteo](kuoteo)
-- [https://github.com/leekachung](leekachung)
+- [yushen7](https://github.com/yushen7)
+- [kuoteo](https://github.com/kuoteo)
+- [leekachung](https://github.com/leekachung)
