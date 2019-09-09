@@ -5,24 +5,30 @@
   <view class="header">
     <swiper 
       class="banner"
-      indicator-dots="{{indicatorDots}}"
       autoplay="false" 
       interval="{{interval}}" 
       duration="{{duration}}" 
-      circular="true">
+      circular="true"
+      bindchange="swiperChange">
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
         <swiper-item>
-          <image src="{{item}}" class="slide-image" width="355" height="150"/>
+          <image src="{{item}}" class="slide-image"/>
         </swiper-item>
       </block>
+
     </swiper>
+      <view class="swiper-indicators">
+        <block wx:for="[,]" wx:key="{{index}}">
+          <span class="swiper-indicator swiper-indicator{{index == swiperCurrentIndex ? '--active' : '--passive'}}"></span>
+        </block>
+      </view>    
   </view>
 
 
   <view class="content">
-    <view class="post-need normal-shadow">
+    <!-- <view class="post-need normal-shadow">
       <button class="post-need__btn">点我发布</button>
-    </view>
+    </view> -->
 
     <view class="service-list normal-shadow">
     <ul>
@@ -42,6 +48,6 @@
   </view>
 
 </view>
-<image class="bg-test" src="./images/background.jpg">
+<image class="bg-test">
 
 </image>

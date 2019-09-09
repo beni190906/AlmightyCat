@@ -15,6 +15,7 @@ Page({
       autoplay: false,
       interval: 5000,
       duration: 500,
+      swiperCurrentIndex:0,
       serviceList: [{
         title:"快递代拿",
         icon:'./images/icon1.png'
@@ -38,6 +39,18 @@ Page({
           title: "快递代拿",
           icon: './images/shield.png'
         }],
+    },
+  onShow(){
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
     }
-  
+  },
+  swiperChange(e){
+    this.setData({
+      swiperCurrentIndex:e.detail.current
+    })
+  }
 })

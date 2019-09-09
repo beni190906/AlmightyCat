@@ -1,2 +1,26 @@
 <!--pages/mine/mine.wxml-->
-<text>pages/mine/mine.wxml</text>
+<view class="app">
+  <!--用户信息-->
+  <view class="user-info">
+    <view class="user-info__content">
+      <image class="user-info__avatar" src="{{userInfo.avatarUrl}}"></image>
+      <p class="user-info__name">{{userInfo.nickName? userInfo.nickName : '登录'}} </p>
+    </view>
+  </view>
+  <!--用户功能-->
+  <view class="user-service">
+    <view class="user-service__content"> 
+      <ul class="user-service__list">
+        <block wx:for="{{serviceList}}" wx:key="{{index}}">
+          <navigator url="{{item.url}}">
+            <li  class="user-service__item">
+              <image></image>
+              <image class="user-service__item-gt" src="{{gtUrl}}"></image>
+              <p>{{item.title}}</p>
+            </li>
+          </navigator>
+        </block>
+      </ul>
+    </view>
+  </view>
+</view>
