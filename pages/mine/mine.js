@@ -51,22 +51,12 @@ Page({
         selected: 1
       })
     }
-    
+     
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              wx.getUserInfo({
-                success(res) {
-                  const userInfo = res.userInfo;
-                  that.setData({
-                    userInfo
-                  })
-                }
-              })
-            }
+          that.setData({
+            userInfo: wx.getStorageSync("userInfo")
           })
         }
       }
@@ -106,5 +96,35 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  /**
+   * 授权
+   */
+  getUserInfo: function (e) {
+    // 拒绝授权情况
+    if (!e.detail.userInfo) {
+      wx.showToast({
+        title: '取消授权',
+        icon: 'none'
+      })
+      return
+    }
+    const app = getApp()
+    let beni = app.globalData.beni
+    let that = this
+    // Call SCF
+    beni.callFunction({
+      name: 'getUserInfo',
+      success: function (res) {
+        e.detail.userInfo.openid = res.result.openid
+        app.globalData.userInfo = e.detail.userInfo
+        that.setData({
+          userInfo: e.detail.userInfo
+        })
+        wx.setStorageSync('userInfo', e.detail.userInfo)  
+      },
+      fail: console.error
+    })
   }
 });

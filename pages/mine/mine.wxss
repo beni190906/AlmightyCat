@@ -19,6 +19,9 @@ p{
   background-color: #F2F7FA;
   padding-top: 16px;
 }
+.user-info__content::after{
+  border: none;
+}
 .user-info__content image{
   width: 64px;
   height: 64px;
