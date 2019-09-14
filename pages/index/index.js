@@ -6,11 +6,11 @@ Page({
   data: {
 
       imgUrls: [
-        'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-        'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-        'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
+          'https://images.unsplash.com/photo-1568280078491-6b7449ce3b46?w=640',
+          'http://images.unsplash.com/photo-1568262262114-ea68746d20b6?w=640',
+          'https://images.unsplash.com/photo-1568293949816-25feeb97570b?w=640',
       ],
-      backgroundImages:"./images/background.jpg",
+      // backgroundImages:"./images/background.jpg",
       indicatorDots: true,
       autoplay: false,
       interval: 5000,
@@ -18,26 +18,27 @@ Page({
       swiperCurrentIndex:0,
       serviceList: [{
         title:"快递代拿",
-        icon:'./images/icon1.png'
+        icon:'./images/1.png'
       }, 
       {
-        title: "快递代拿",
-        icon: './images/icon2.png'
+        title: "闲置转让",
+        icon: './images/2.png'
       }, 
       {
-        title: "快递代拿",
-        icon: './images/icon3.png'
-        }, {
-          title: "快递代拿",
-        icon: './images/icon3.png'
+        title: "一键拼车",
+        icon: './images/3.png'
+        }, 
+        {
+          title: "课表查询",
+        icon: './images/4.png'
         },
         {
-          title: "快递代拿",
-          icon: './images/shield.png'
+          title: "学习库",
+          icon: './images/5.png'
         },
         {
-          title: "快递代拿",
-          icon: './images/shield.png'
+          title: "待办事项",
+          icon: './images/6.png'
         }],
     },
   onShow(){
