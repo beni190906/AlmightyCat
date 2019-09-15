@@ -21,6 +21,7 @@
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionRoot": "beni-faas/",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -38,6 +39,5 @@
 			"current": -1,
 			"list": []
 		}
-	},
-  "cloudfunctionRoot": "./beni-faas/"
+	}
 }

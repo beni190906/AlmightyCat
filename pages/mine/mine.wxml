@@ -22,7 +22,7 @@
         <block wx:for="{{serviceList}}" wx:key="{{index}}">
           <navigator url="{{item.url}}">
             <li  class="user-service__item">
-              <image></image>
+              <image src="{{item.icon}}"></image>
               <image class="user-service__item-gt" src="{{gtUrl}}"></image>
               <p>{{item.title}}</p>
             </li>

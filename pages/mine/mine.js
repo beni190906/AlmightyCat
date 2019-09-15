@@ -15,13 +15,13 @@ Page({
     },
     serviceList:[
       {
-        url:'../mine_forward/forward',icon:'',title:'分享程序'
+        url:'../mine_forward/forward',icon:'images/share.png',title:'分享程序'
       },
       {
-        url:'../mine_help/help',icon:'',title:'使用帮助'
+        url: '../mine_help/help', icon:'images/help.png',title:'使用帮助'
       },
       {
-        url: '../mine_contactus/contactus', icon:'',title: '联系我们'
+        url: '../mine_contactus/contactus', icon:'images/contact.png',title: '联系我们'
       }
     ],
     gtUrl:'./images/gt.png'
@@ -31,6 +31,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.stopPullDownRefresh()
   },
 
   /**
@@ -81,14 +82,33 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    let that = this
+    const app = getApp()
+    // 更新用户信息
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              res.userInfo.openid = wx.getStorageSync("userInfo").openid
+              that.setData({
+                userInfo: res.userInfo
+              })
+              wx.setStorageSync('userInfo', res.userInfo)
+            }
+          })
+        }
+      }
+    })
+    this.onLoad();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    
   },
 
   /**
@@ -106,7 +126,8 @@ Page({
     if (!e.detail.userInfo) {
       wx.showToast({
         title: '取消授权',
-        icon: 'none'
+        icon: 'none',
+        duration: 600
       })
       return
     }
@@ -118,7 +139,6 @@ Page({
       name: 'getUserInfo',
       success: function (res) {
         e.detail.userInfo.openid = res.result.openid
-        app.globalData.userInfo = e.detail.userInfo
         that.setData({
           userInfo: e.detail.userInfo
         })
